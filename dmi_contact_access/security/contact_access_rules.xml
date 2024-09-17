@@ -1,0 +1,60 @@
+<odoo>
+    <data>
+
+        <record id="dmi_contact_access.module_dmi_contact_access" model="ir.module.category">
+            <field name="name">Commercial</field>
+            <field name="description">Helps you handle your Res Partner Records.</field>
+            <field name="sequence">1</field>
+        </record>
+
+        <record id="group_commercial_own_user" model="res.groups">
+            <field name="name">Commercial Own User</field>
+             <field name="category_id" ref="dmi_contact_access.module_dmi_contact_access"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <record id="group_commercial_all_user" model="res.groups">
+            <field name="name">Commercial All User</field>
+             <field name="category_id" ref="dmi_contact_access.module_dmi_contact_access"/>
+             <field name="implied_ids" eval="[(4, ref('group_commercial_own_user'))]"/>
+            <field name="users" eval="[Command.link(ref('base.user_root')), Command.link(ref('base.user_admin'))]"/>
+        </record>
+
+        <!--  Rules Start  -->
+         <record id="rule_partner_deny_all" model="ir.rule">
+            <field name="name">Deny All Partners</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">[(0, '=', 1)]</field>
+            <field name="groups" eval="[Command.link(ref('base.group_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+         <record id="rule_commercial_own_user" model="ir.rule">
+             <field name="name">Commercial User Own Partners</field>
+             <field name="model_id" ref="base.model_res_partner"/>
+             <field name="groups" eval="[(4, ref('dmi_contact_access.group_commercial_own_user'))]"/>
+             <field name="domain_force">[('user_ids', 'in', user.partner_id.user_ids.ids)]</field>
+             <field name="perm_read" eval="True"/>
+             <field name="perm_write" eval="False"/>
+             <field name="perm_create" eval="False"/>
+             <field name="perm_unlink" eval="False"/>
+
+        </record>
+
+        <record id="rule_commercial_all_user" model="ir.rule">
+            <field name="name">Commercial All User All Partners</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="groups" eval="[(4, ref('dmi_contact_access.group_commercial_all_user'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field> <!-- This allows access to all records -->
+            <field name="perm_read" eval="True"/>
+             <field name="perm_write" eval="True"/>
+             <field name="perm_create" eval="True"/>
+             <field name="perm_unlink" eval="True"/>
+        </record>
+
+    </data>
+</odoo>
