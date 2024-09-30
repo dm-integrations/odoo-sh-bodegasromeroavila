@@ -4,7 +4,7 @@
     <menuitem
         id="spreadsheet_dashboard.spreadsheet_dashboard_menu_root"
         name="Tableros"
-        action="ir_actions_dashboard_action"
+        action="spreadsheet_dashboard.ir_actions_dashboard_action"
         groups="spreadsheet_dashboard.group_dashboard_manager"
         web_icon="spreadsheet_dashboard,static/description/icon.png"
         sequence="37"/>
