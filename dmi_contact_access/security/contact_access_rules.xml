@@ -2,8 +2,8 @@
     <data>
 
         <record id="dmi_contact_access.module_dmi_contact_access" model="ir.module.category">
-            <field name="name">Commercial</field>
-            <field name="description">Helps you handle your Res Partner Records.</field>
+            <field name="name">Comercial</field>
+            <field name="description">Le ayuda a administrar sus registros de socios de Res.</field>
             <field name="sequence">1</field>
         </record>
 
@@ -37,7 +37,7 @@
              <field name="name">Commercial User Own Partners</field>
              <field name="model_id" ref="base.model_res_partner"/>
              <field name="groups" eval="[(4, ref('dmi_contact_access.group_commercial_own_user'))]"/>
-             <field name="domain_force">[('user_ids', 'in', user.partner_id.user_ids.ids)]</field>
+             <field name="domain_force">['|',('user_id', '=', False),('user_id', 'in', user.ids)]</field>
              <field name="perm_read" eval="True"/>
              <field name="perm_write" eval="False"/>
              <field name="perm_create" eval="False"/>
