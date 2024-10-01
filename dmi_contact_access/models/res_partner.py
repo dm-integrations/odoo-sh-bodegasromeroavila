@@ -7,5 +7,8 @@ class ResPartner(models.Model):
 
     user_id = fields.Many2one(
         default=lambda self: self.env.user,
+        comodel_name="res.users",
+        string="Comercial",
+        tracking=True,
         required=True,
     )
