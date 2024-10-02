@@ -3,7 +3,7 @@
 
 {
     'name': 'DMI Bodegas Romero Base',
-    'version': '17.0.1.0',
+    'version': '17.0.1.1',
     'category': 'Contacts',
     'summary': 'Personalizaciones para Bodegas Romero',
     'description': """
@@ -16,8 +16,12 @@
         'mail',
         'spreadsheet_dashboard',
         'website',
+        'crm',
+        'sms',
     ],
     'data': [
+        'views/crm_lead_views.xml',
+        'views/res_partner_views.xml',
         'views/menu_views.xml',
         'views/mail_templates.xml',
     ],

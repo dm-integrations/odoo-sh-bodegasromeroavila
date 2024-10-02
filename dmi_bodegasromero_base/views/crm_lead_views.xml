@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="crm_lead_view_form" model="ir.ui.view">
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form" />
+        <field name="priority">999</field>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='lead_partner']//field[@name='partner_name']" position='after'>
+                <field name="vat"/>
+            </xpath>
+            <xpath expr="//group[@name='opportunity_partner']//field[@name='partner_id']" position='after'>
+                <field name="vat"/>
+            </xpath>
+            <xpath expr="//field[@name='tag_ids']" position='before'>
+                <field name="fuente" required="1"/>
+            </xpath>
+        </field>
+    </record>
+    <!-- Vista SEARCH   -->
+    <record id="view_crm_case_opportunities_filter" model="ir.ui.view">
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']" position='before'>
+                <field name="fuente"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
