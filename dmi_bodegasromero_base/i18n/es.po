@@ -1,0 +1,15 @@
+#. module: mail
+#. odoo-javascript
+#: code:addons/mail/static/src/core/web/chatter.xml:0
+#: code:addons/mail/static/src/discuss/web/avatar_card/avatar_card_popover.xml:0
+#, python-format
+msgid "Send message"
+msgstr "Enviar correo"
+
+#. module: mail
+#. odoo-javascript
+#: code:addons/mail/static/src/core/common/composer.js:0
+#: code:addons/mail/static/src/core/web/chatter.xml:0
+#, python-format
+msgid "Log note"
+msgstr "Chat interno"
