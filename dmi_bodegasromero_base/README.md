@@ -45,4 +45,11 @@ No requiere de ninguna configuración especial para su instalación.
     Primera versión del módulo.
     Ocultamos en las plantillas de correo, en el footer el apartado Powered by Odoo.
     Añadimos permisos superiores a los menus de Tableros, Empleados, Website para que los usuarios estandar no vean esos menus.
+ 
+[17.0.1.1] - 2024-10-2
+
+    Añadimos campos personalizados en el modelo de crm.lead 
+    Añadimos campos personalizados en el modelo de res.partner
+    Extendemos la vista de crm.lead para añadir los campos personalizados y un atajo en el buscador
+    Extendemos la vista de res.partner para añadir los campos personalizados y modificamos la vista para reorganizad la visual
 
