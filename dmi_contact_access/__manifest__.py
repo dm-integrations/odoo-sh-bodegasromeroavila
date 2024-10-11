@@ -1,6 +1,6 @@
 {
     'name': 'DMI Contact Access',
-    'version': '17.0.1.1.1',
+    'version': '17.0.1.1.2',
     'category': 'Contacts',
     'summary': 'Restricts access to contacts based on the assigned salesperson',
     'description': """
