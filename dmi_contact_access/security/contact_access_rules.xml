@@ -37,7 +37,7 @@
              <field name="name">Commercial User Own Partners</field>
              <field name="model_id" ref="base.model_res_partner"/>
              <field name="groups" eval="[(4, ref('dmi_contact_access.group_commercial_own_user'))]"/>
-             <field name="domain_force">['|', ('user_id', 'in', user.ids),('user_ids', 'in', user.ids)]</field>
+             <field name="domain_force">['|', '|', ('user_id', 'in', user.ids),('user_ids', 'in', user.ids),('user_ids', '!=', False)]</field>
              <field name="perm_read" eval="True"/>
              <field name="perm_write" eval="False"/>
              <field name="perm_create" eval="False"/>
