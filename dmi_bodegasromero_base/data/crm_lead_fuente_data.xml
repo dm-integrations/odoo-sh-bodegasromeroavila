@@ -1,0 +1,6 @@
+<!-- data/mi_modelo_data.xml -->
+<odoo>
+    <record id="crm_lead_fuente_data" model="crm.lead.fuente">
+        <field name="name">Cliente vinculado</field>
+    </record>
+</odoo>

@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
+    <record id="crm_fuente_action" model="ir.actions.act_window">
+        <field name="name">Fuentes</field>
+        <field name="res_model">crm.lead.fuente</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Crear nueva Fuente
+          </p>
+        </field>
+    </record>
+
     <menuitem
         id="spreadsheet_dashboard.spreadsheet_dashboard_menu_root"
         name="Tableros"
@@ -22,5 +32,13 @@
         web_icon="hr,static/description/icon.png"
         sequence="185"/>
 
+
+    <menuitem
+        id="menu_crm_lead_fuente"
+        name="Fuentes"
+        sequence="5"
+        parent="crm.menu_crm_config_lead"
+        action="dmi_bodegasromero_base.crm_fuente_action"
+        groups="base.group_no_one"/>
 
 </odoo>

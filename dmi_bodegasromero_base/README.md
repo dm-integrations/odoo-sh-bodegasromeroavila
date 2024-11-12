@@ -53,3 +53,12 @@ No requiere de ninguna configuración especial para su instalación.
     Extendemos la vista de crm.lead para añadir los campos personalizados y un atajo en el buscador
     Extendemos la vista de res.partner para añadir los campos personalizados y modificamos la vista para reorganizad la visual
 
+
+[17.0.1.2] - 2024-11-12
+
+    Añadimos campos personalizados en el modelo de crm.lead 
+    Añadimos campos personalizados en el modelo de res.partner
+    Añadimos minuatura de imagen del producto en las lineas de pedido a nivel de formulario
+    Extendemos la vista de crm.lead para añadir los campos personalizados y un atajo en el buscador
+    Extendemos la vista de res.partner para añadir los campos personalizados y modificamos la vista para reorganizad la visual
+    Creamos modelo crm.lead.fuente para indicar por que fuente entra un cliente u oportunidad
