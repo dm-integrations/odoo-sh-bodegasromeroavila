@@ -67,3 +67,8 @@ No requiere de ninguna configuración especial para su instalación.
 
     Creamos una actividad al usuario Ana (id=2) cada vez que se cree un nuevo cliente de tipo compañia, para que revise los datos
     Traduccion del boton de actividades a Recordatorios
+    Añadimos dependencias de módulo de cupones y fidelidad (sale_loyalty) 
+    Personalizamos la funcionalidad para poder asignar tarjeta de fidelidad a los clientes y poder gestionar las promociones personlizadas
+    Añadimos control de promociones a nivel de cliente, para compobrar si ese cliente cumple con las condiciones de la promocion
+    Añadimos la linea de promocion en verde para que resalte la linea con la promocion aplicada.
+    Al confirmar el pedido comprobamos si hay que aplicar promocion y si hay que hacerlo se aplica

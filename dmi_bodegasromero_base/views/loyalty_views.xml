@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="loyalty_program_view_form" model="ir.ui.view">
+        <field name="model">loyalty.program</field>
+        <field name="inherit_id" ref="loyalty.loyalty_program_view_form" />
+        <field name="priority">9</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='trigger_product_ids']" position="before">
+                <field name="partner_ids"
+                        widget="many2many_tags"
+                        invisible="program_type != 'loyalty'"/>
+
+                    <p class="text-muted" invisible="program_type != 'loyalty'" colspan="2">
+                        Clientes a los que aplicara la promoción en caso de no seleccionar ninguno se aplicará a todos los clientes
+                    </p>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

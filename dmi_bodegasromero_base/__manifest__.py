@@ -19,6 +19,7 @@
         'crm',
         'sms',
         'sale_management',
+        'sale_loyalty',
     ],
     'data': [
         'security/ir.model.access.csv',
@@ -27,6 +28,7 @@
         'views/crm_lead_fuente_views.xml',
         'views/res_partner_views.xml',
         'views/sale_order_views.xml',
+        'views/loyalty_views.xml',
         'views/menu_views.xml',
         'views/mail_templates.xml',
     ],

@@ -1,5 +1,4 @@
 from odoo import models, api, fields, _
-import json
 
 
 class SaleOrderLine(models.Model):
