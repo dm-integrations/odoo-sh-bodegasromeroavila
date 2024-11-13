@@ -62,7 +62,6 @@ Es necesario revisar la configuración de los grupos asignados a cada usuario.
     tiene asociados a los compañeros de trabajo, no se podía asignar seguidores a los contactos.
     Se amplia el filtro para permitir a los usuarios asignar seguidores a los contactos que no son suyos, 
     pero pertenecen o tienen asignados usuarios internos del sistema.
-
     
 
 [17.0.1.1.3] - 2024-11-12

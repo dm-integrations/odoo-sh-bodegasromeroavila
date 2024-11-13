@@ -62,3 +62,8 @@ No requiere de ninguna configuración especial para su instalación.
     Extendemos la vista de crm.lead para añadir los campos personalizados y un atajo en el buscador
     Extendemos la vista de res.partner para añadir los campos personalizados y modificamos la vista para reorganizad la visual
     Creamos modelo crm.lead.fuente para indicar por que fuente entra un cliente u oportunidad
+
+[17.0.1.3] - 2024-11-13
+
+    Creamos una actividad al usuario Ana (id=2) cada vez que se cree un nuevo cliente de tipo compañia, para que revise los datos
+    Traduccion del boton de actividades a Recordatorios
