@@ -53,3 +53,22 @@ No requiere de ninguna configuración especial para su instalación.
     Extendemos la vista de crm.lead para añadir los campos personalizados y un atajo en el buscador
     Extendemos la vista de res.partner para añadir los campos personalizados y modificamos la vista para reorganizad la visual
 
+
+[17.0.1.2] - 2024-11-12
+
+    Añadimos campos personalizados en el modelo de crm.lead 
+    Añadimos campos personalizados en el modelo de res.partner
+    Añadimos minuatura de imagen del producto en las lineas de pedido a nivel de formulario
+    Extendemos la vista de crm.lead para añadir los campos personalizados y un atajo en el buscador
+    Extendemos la vista de res.partner para añadir los campos personalizados y modificamos la vista para reorganizad la visual
+    Creamos modelo crm.lead.fuente para indicar por que fuente entra un cliente u oportunidad
+
+[17.0.1.3] - 2024-11-13
+
+    Creamos una actividad al usuario Ana (id=2) cada vez que se cree un nuevo cliente de tipo compañia, para que revise los datos
+    Traduccion del boton de actividades a Recordatorios
+    Añadimos dependencias de módulo de cupones y fidelidad (sale_loyalty) 
+    Personalizamos la funcionalidad para poder asignar tarjeta de fidelidad a los clientes y poder gestionar las promociones personlizadas
+    Añadimos control de promociones a nivel de cliente, para compobrar si ese cliente cumple con las condiciones de la promocion
+    Añadimos la linea de promocion en verde para que resalte la linea con la promocion aplicada.
+    Al confirmar el pedido comprobamos si hay que aplicar promocion y si hay que hacerlo se aplica

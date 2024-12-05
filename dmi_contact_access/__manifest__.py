@@ -1,15 +1,21 @@
 {
     'name': 'DMI Contact Access',
-    'version': '17.0.1.1.2',
+    'version': '17.0.1.1.4',
     'category': 'Contacts',
     'summary': 'Restricts access to contacts based on the assigned salesperson',
     'description': """
         This module restricts internal users' access to contacts.
     Users can see and use a contact only if they are assigned as the salesperson on the res.partner form.
     """,
-    'depends': ['base', 'contacts', 'sale_management'],
+    'depends': [
+        'base',
+        'contacts',
+        'sale_management',
+        'dmi_bodegasromero_base',
+    ],
     'data': [
         'security/contact_access_rules.xml',
+        'security/sale_access_rules.xml',
     ],
     'installable': True,
     'application': False,

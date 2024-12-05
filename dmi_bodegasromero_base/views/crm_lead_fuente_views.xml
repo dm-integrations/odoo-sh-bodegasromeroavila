@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Form view of Merge Purchase order -->
+
+    <record id="view_crm_fuente_form" model="ir.ui.view">
+        <field name="model">crm.lead.fuente</field>
+        <field name="name">view.crm.fuente.form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name" placeholder="e.g. Llamada telefónica"/></h1>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_crm_fuente_tree" model="ir.ui.view">
+        <field name="model">crm.lead.fuente</field>
+        <field name="name">view.crm.fuente.tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+</odoo>

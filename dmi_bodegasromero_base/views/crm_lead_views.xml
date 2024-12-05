@@ -13,6 +13,7 @@
             </xpath>
             <xpath expr="//field[@name='tag_ids']" position='before'>
                 <field name="fuente" required="1"/>
+                <field name="fuente_id" required="1"/>
             </xpath>
         </field>
     </record>
