@@ -17,7 +17,7 @@ class ResPartner(models.Model):
         comodel_name="res.users",
         string="Seguidores",
         tracking=True,
-        required=True,
+        required=False,
     )
     tapon = fields.Selection(
         string="Tapón",
