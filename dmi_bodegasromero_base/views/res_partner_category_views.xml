@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<odoo>
+
+
+<!--  VISTAS TREE  -->
+
+    <record id="view_partner_category_list" model="ir.ui.view">
+        <field name="model">res.partner.category</field>
+        <field name="inherit_id" ref="base.view_partner_category_list" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='display_name']" position="before">
+                <field name="sequence" widget="handle"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -72,3 +72,11 @@ No requiere de ninguna configuración especial para su instalación.
     Añadimos control de promociones a nivel de cliente, para compobrar si ese cliente cumple con las condiciones de la promocion
     Añadimos la linea de promocion en verde para que resalte la linea con la promocion aplicada.
     Al confirmar el pedido comprobamos si hay que aplicar promocion y si hay que hacerlo se aplica
+
+[17.0.1.4] - 2024-12-20
+
+    En campo cliente vinculado no dejar crear en caliente
+    Añadir al cliente vinculado solo clientes a los que tengan acceso el comercial que lo crea 
+    (O que sea el comercial o que sea el usuario seguidor)
+    Campo fuente contacto que sea requerido, las fuentes solo se pueden crear desde su menu de configuracion. 
+    Etiquetas de contacto ordenar por secuencia en vez de por nombre
