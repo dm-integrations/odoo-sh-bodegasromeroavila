@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Form view of Merge Purchase order -->
+
+    <record id="view_calendar_event_form" model="ir.ui.view">
+        <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='alarm_ids']" position="after">
+                <field name="team_id"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

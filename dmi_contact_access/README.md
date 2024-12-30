@@ -68,4 +68,9 @@ Es necesario revisar la configuración de los grupos asignados a cada usuario.
 
     - Añadimos control de permisos de ventas para solo mostrar aquellas pedido de clientes deonde se esta como seguidor o comercial
     - Permitimos ver contactos a usuario del grupo Commercial Own user si estan como seguidores
+    
+
+[17.0.1.1.4] - 2024-11-12
+
+    - Añadimos un campo que indica si el contacto es un contacto de un usuario interno. Con esto buscamos solucionar el error de permisos
 
