@@ -40,10 +40,10 @@
              <field name="domain_force">
                  [
                     '|',
-                    ('user_id','=',user.id),
+                    ('internal_partner', '=', True),
                     '|',
-                    ('commercial_partner_id.user_ids','in', [user.id]),
-                    ('user_ids', 'in', user.ids)
+                    ('user_id','=',user.id),
+                    ('commercial_partner_id.user_ids','in',  user.ids),
                 ]
              </field>
              <field name="perm_read" eval="True"/>

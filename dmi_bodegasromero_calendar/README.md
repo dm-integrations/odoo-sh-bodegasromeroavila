@@ -80,9 +80,3 @@ No requiere de ninguna configuración especial para su instalación.
     (O que sea el comercial o que sea el usuario seguidor)
     Campo fuente contacto que sea requerido, las fuentes solo se pueden crear desde su menu de configuracion. 
     Etiquetas de contacto ordenar por secuencia en vez de por nombre
-
-[17.0.1.4] - 2024-12-20
-
-    El campo fuente lo hacemos requerido en los contactos
-    Añadimos el campo fuente en la vista de lista de contactos
-    Quitamos el campo fuente antiguo de la vista de oportunidades (el de tipo texto)

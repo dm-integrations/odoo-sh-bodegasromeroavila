@@ -3,7 +3,7 @@
 
 {
     'name': 'DMI Bodegas Romero Base',
-    'version': '17.0.1.0.5',
+    'version': '17.0.1.0.4',
     'category': 'Contacts',
     'summary': 'Personalizaciones para Bodegas Romero',
     'description': """
@@ -12,27 +12,19 @@
     "website": "https://dmintegrations.eu",
     "author": "Dm integrations",
     'depends': [
-        'hr',
-        'mail',
-        'spreadsheet_dashboard',
-        'website',
         'crm',
-        'sms',
-        'sale_management',
-        'sale_loyalty',
+        'calendar',
+        'web',
     ],
     'data': [
-        'security/ir.model.access.csv',
-        'data/crm_lead_fuente_data.xml',
-        'views/crm_lead_views.xml',
-        'views/crm_lead_fuente_views.xml',
-        'views/res_partner_views.xml',
-        'views/res_partner_category_views.xml',
-        'views/sale_order_views.xml',
-        'views/loyalty_views.xml',
-        'views/menu_views.xml',
-        'views/mail_templates.xml',
+        'views/calendar_event_views.xml',
     ],
+    'assets': {
+        'web.assets_backend': [
+            # 'dmi_bodegasromero_calendar/static/src/js/*',
+            'dmi_bodegasromero_calendar/static/src/views/**/*',
+        ],
+    },
     'installable': True,
     'application': False,
     'license': 'OPL-1',
