@@ -86,3 +86,8 @@ No requiere de ninguna configuración especial para su instalación.
     El campo fuente lo hacemos requerido en los contactos
     Añadimos el campo fuente en la vista de lista de contactos
     Quitamos el campo fuente antiguo de la vista de oportunidades (el de tipo texto)
+
+[17.0.1.5] - 2025-01-09
+
+    Al crear las tareas con fecha de inicion y asistentes. Sincronizamos con el calendario global
+
