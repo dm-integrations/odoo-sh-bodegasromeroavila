@@ -76,3 +76,8 @@ class ProjectTask(models.Model):
                 record.upsert_calendar_event()
         return res
 
+    def unlink(self):
+        for record in self:
+            if record.calendar_event_id:
+                record.calendar_event_id.unlink()
+        return super().unlink()
