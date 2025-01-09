@@ -4,6 +4,25 @@ from odoo import models, api, fields, _
 class CalendarEvent(models.Model):
     _inherit = "calendar.event"
 
+    project_id = fields.Many2one(
+        comodel_name='project.project',
+        string='Proyecto',
+    )
+    task_id = fields.Many2one(
+        comodel_name='project.task',
+        string='Tarea',
+    )
+
+    def action_view_task(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'project.task',
+            'view_mode': 'form',
+            'res_id': self.task_id.id,
+            'target': 'current',
+        }
+
     def _prepare_notification_vals(self, vals):
         body = ""
         ir_models_field_obj = self.env['ir.model.fields']
@@ -36,6 +55,16 @@ class CalendarEvent(models.Model):
                         force_send=True,
                     )
         return True
+
+    def action_view_event(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'calendar.event',
+            'view_mode': 'form',
+            'res_id': self.id,
+            'target': 'current',
+        }
 
     def write(self, vals):
         res = super().write(vals)

@@ -13,7 +13,7 @@
     "author": "Dm integrations",
     'depends': [
         'hr',
-        'mail',
+        'portal',
         'spreadsheet_dashboard',
         'website',
         'crm',
@@ -24,11 +24,13 @@
     'data': [
         'security/ir.model.access.csv',
         'data/crm_lead_fuente_data.xml',
+        'views/calendar_event_views.xml',
         'views/crm_lead_views.xml',
         'views/crm_lead_fuente_views.xml',
         'views/res_partner_views.xml',
         'views/res_partner_category_views.xml',
         'views/sale_order_views.xml',
+        'views/task_views.xml',
         'views/loyalty_views.xml',
         'views/menu_views.xml',
         'views/mail_templates.xml',
