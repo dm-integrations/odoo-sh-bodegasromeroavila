@@ -6,7 +6,8 @@
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
             <xpath expr="//div[@name='button_box']" position="inside">
-                <button name="action_open_calendar_event" string="Calendario" type="object" icon="fa-calendar" class="oe_highlight" />
+                <field name="dmi_calendar_event_id" invisible="1"/>
+                <button invisible="not dmi_calendar_event_id" name="action_open_calendar_event" string="Calendario" type="object" icon="fa-calendar" class="oe_highlight" />
             </xpath>
         </field>
     </record>
