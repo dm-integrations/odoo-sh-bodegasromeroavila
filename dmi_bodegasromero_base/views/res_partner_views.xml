@@ -32,11 +32,14 @@
         <field name="inherit_id" ref="base.view_partner_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='category_id']" position="after">
-                <field name="fuente_id" required="1" options="{'no_create': 1, 'no_create_edit': 1}"/>
+                <field name="fuente_id" required="is_company == True or not parent_id " options="{'no_create': 1, 'no_create_edit': 1}"/>
                 <field name="partner_vinculado_id" required="fuente_id == 1" options="{'no_create': 1, 'no_create_edit': 1}"/>
             </xpath>
             <xpath expr="//field[@name='team_id']" position="before">
                 <field name="user_ids" widget="many2many_tags"/>
+            </xpath>
+            <xpath expr="//field[@name='property_product_pricelist']" position="attributes">
+                <attribute name="domain">[('no_show_in_list','=',False)]</attribute>
             </xpath>
         </field>
     </record>

@@ -31,7 +31,7 @@ class ResPartner(models.Model):
         comodel_name="crm.lead.fuente",
     )
     partner_vinculado_id = fields.Many2one(
-        string="Cliente Vinculado",
+        string="Contacto Vinculado",
         comodel_name="res.partner",
         domain=[("is_company", "=", True)]
     )

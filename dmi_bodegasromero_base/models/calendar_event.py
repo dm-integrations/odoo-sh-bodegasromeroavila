@@ -4,6 +4,12 @@ from odoo import models, api, fields, _
 class CalendarEvent(models.Model):
     _inherit = "calendar.event"
 
+    task_id = fields.Many2one(
+        "project.task",
+        string="Tarea Asociada",
+        readonly=True,
+    )
+
     def _prepare_notification_vals(self, vals):
         body = ""
         ir_models_field_obj = self.env['ir.model.fields']
