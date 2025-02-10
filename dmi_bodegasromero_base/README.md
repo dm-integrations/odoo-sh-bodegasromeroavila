@@ -86,3 +86,11 @@ No requiere de ninguna configuración especial para su instalación.
     El campo fuente lo hacemos requerido en los contactos
     Añadimos el campo fuente en la vista de lista de contactos
     Quitamos el campo fuente antiguo de la vista de oportunidades (el de tipo texto)
+
+[17.0.1.5] - 2025-02-04
+
+    Cambiar literal de cliente vinculado a contacto vinculado
+    Si en la tarea la fecha limite se pasa, crear una actividad recordando a la persona que la tiene asignada
+    En las listas de precios añadir check no_mostrar_listado para marcar tarifas de un unico cliente y no mostrarlas en el many2many de tarifas en contacto
+    Pedir la fuente solo para contactos de tipo compañia o que no tenga un parent_id asociado
+    Sincronizar las tareas de un proyecto en el calendario general si tiene inicio y fin
