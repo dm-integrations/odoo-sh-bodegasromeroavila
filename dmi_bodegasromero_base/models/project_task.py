@@ -50,7 +50,8 @@ class ProjectTask(models.Model):
             "start": vals.get("planned_date_begin") if vals.get("planned_date_begin") else self.planned_date_begin,
             "stop": vals.get("date_deadline") if vals.get("date_deadline") else self.date_deadline,
             "description": vals.get("description") if vals.get("description") else self.description,
-            "partner_ids": [(6, 0, follower_partner_ids.ids)],
+            "partner_ids": [(6, 0, follower_partner_ids.ids)]
+            if follower_partner_ids else [(6, 0, self.env.user.partner_id.ids)],
             "active": True,
             "task_id": self.id
         }
