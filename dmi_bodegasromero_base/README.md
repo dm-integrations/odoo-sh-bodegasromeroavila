@@ -94,3 +94,7 @@ No requiere de ninguna configuración especial para su instalación.
     En las listas de precios añadir check no_mostrar_listado para marcar tarifas de un unico cliente y no mostrarlas en el many2many de tarifas en contacto
     Pedir la fuente solo para contactos de tipo compañia o que no tenga un parent_id asociado
     Sincronizar las tareas de un proyecto en el calendario general si tiene inicio y fin
+
+[17.0.1.6] - 2025-02-24
+
+    Hacemos requerido el campo country_id de res_partner
