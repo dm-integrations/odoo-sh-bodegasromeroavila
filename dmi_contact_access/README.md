@@ -74,3 +74,8 @@ Es necesario revisar la configuración de los grupos asignados a cada usuario.
 
     - Añadimos un campo que indica si el contacto es un contacto de un usuario interno. Con esto buscamos solucionar el error de permisos
 
+
+
+[17.0.1.1.5] - 2024-02-252
+
+    - Regla de registro para que los commerciales solo tenga acceso a los eventos de calendario donde esten como seguidores o sean suyos
