@@ -1,4 +1,5 @@
 from odoo import models, api, fields, _
+from datetime import datetime, timedelta
 
 
 class ProjectTask(models.Model):
@@ -24,7 +25,7 @@ class ProjectTask(models.Model):
 
     def set_task_activity(self):
         for user in self.user_ids:
-            self.env["mail.activity"].create(
+            self.env["mail.activity"].sudo().create(
                 {
                     "activity_type_id": self.env.ref("mail.mail_activity_data_todo").id,
                     "summary": "Tarea fuera de fecha límit: " + self.name,
@@ -45,9 +46,16 @@ class ProjectTask(models.Model):
     def _prepare_event_vals(self, vals):
         follower_partner_ids = self.user_ids.mapped('partner_id') \
             if self.user_ids else []
+        start_date = vals.get("planned_date_begin") if vals.get("planned_date_begin") else self.planned_date_begin
+        end_date = vals.get("date_deadline") if vals.get("date_deadline") else self.date_deadline
+        # Si no se indicara fecha de inicio por defecto restamos una hora
+        if not start_date:
+            start_date_dt = datetime.strptime(end_date, "%Y-%m-%d %H:%M:%S") + timedelta(hours=-1)
+            start_date = start_date_dt.strftime("%Y-%m-%d %H:%M:%S")
+
         values = {
             "name": vals.get("name") if vals.get("name") else self.name,
-            "start": vals.get("planned_date_begin") if vals.get("planned_date_begin") else self.planned_date_begin,
+            "start": start_date,
             "stop": vals.get("date_deadline") if vals.get("date_deadline") else self.date_deadline,
             "description": vals.get("description") if vals.get("description") else self.description,
             "partner_ids": [(6, 0, follower_partner_ids.ids)]
@@ -61,10 +69,10 @@ class ProjectTask(models.Model):
     def _upsert_calendar_event(self, vals):
         if self.dmi_calendar_event_id:
             values = self._prepare_event_vals(vals)
-            self.dmi_calendar_event_id.update(values)
+            self.dmi_calendar_event_id.sudo().update(values)
         else:
             values = self._prepare_event_vals(vals)
-            calendar_event_id = self.env["calendar.event"].create(values)
+            calendar_event_id = self.env["calendar.event"].sudo().create(values)
             self.with_context(no_update=True).update({"dmi_calendar_event_id": calendar_event_id.id})
 
     @api.model_create_multi
