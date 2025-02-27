@@ -2,3 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_res_partner,access_res_partner,model_res_partner,base.group_user,1,1,1,1
 access_res_partner,access_res_partner,model_res_partner,dmi_contact_access.group_commercial_own_user,1,0,0,0
 access_res_partner,access_res_partner,model_res_partner,dmi_contact_access.group_commercial_all_user,1,0,0,0
+access_crm_lead_commercial,access_crm_lead_commercial,model_crm_lead,dmi_contact_access.group_commercial_own_user,1,1,1,0

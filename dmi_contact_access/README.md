@@ -79,3 +79,8 @@ Es necesario revisar la configuración de los grupos asignados a cada usuario.
 [17.0.1.1.5] - 2024-02-252
 
     - Regla de registro para que los commerciales solo tenga acceso a los eventos de calendario donde esten como seguidores o sean suyos
+
+
+[17.0.1.1.6] - 2024-02-252
+
+    - Para los usuarios de tipo commercial own user se les prohibe el eliminar las oportunidades del CRM
