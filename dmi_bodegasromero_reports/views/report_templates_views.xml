@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="external_layout_striped" inherit_id="web.external_layout_striped">
+        <xpath expr="//div[@t-field='company.report_footer']/parent::ul" position="before">
+            <span style="font-size:0.6rem;" t-field="company.dmi_report_terms_and_conditions"/>
+        </xpath>
+    </template>
+
+    <template id="external_layout_boxed" inherit_id="web.external_layout_boxed">
+        <xpath expr="//div[@t-field='company.report_footer']" position="before">
+            <span style="font-size:0.6rem;" t-field="company.dmi_report_terms_and_conditions"/>
+        </xpath>
+    </template>
+
+    <template id="external_layout_bold" inherit_id="web.external_layout_bold">
+
+        <xpath expr="//span[@t-field='company.report_footer']/parent::div" position="before">
+            <div class="col-12">
+                <span style="font-size:0.6rem;" t-field="company.dmi_report_terms_and_conditions"/>
+            </div>
+        </xpath>
+
+    </template>
+
+    <template id="external_layout_standard" inherit_id="web.external_layout_standard">
+        <xpath expr="//div[@t-field='company.report_footer']/parent::ul" position="before">
+            <span style="font-size:0.6rem;" t-field="company.dmi_report_terms_and_conditions"/>
+        </xpath>
+    </template>
+</odoo>
