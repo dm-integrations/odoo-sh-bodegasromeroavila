@@ -20,6 +20,7 @@
     'data': [
         'security/ir.model.access.csv',
         'data/precision_data.xml',
+        'reports/report_invoice.xml',
         'views/product_component_views.xml',
         'views/product_template_views.xml',
     ],
