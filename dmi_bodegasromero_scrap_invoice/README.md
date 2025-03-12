@@ -42,4 +42,7 @@ No requiere de ninguna configuración especial para su instalación.
 ## Changelog
  
 [17.0.1.0] - 2025-03-12
+- Modelo para poder dar de alta los componentes y costes de los mismos
+- Asignamos en el producto los componentes y los costes
+- Informe personalizado para mostrar el desglose en las facturas
 
