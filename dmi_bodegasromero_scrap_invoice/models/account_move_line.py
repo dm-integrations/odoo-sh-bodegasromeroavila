@@ -9,12 +9,10 @@ class AccountMoveLine(models.Model):
             return False
 
         total = 0
-        total_quantity = 0
         total_quote = 0
-
+        total_quantity = self.quantity
         for component in self.product_id.product_template_component_ids:
             total += self.quantity * component.quote
-            total_quantity += self.quantity
             total_quote += component.quote
         return {
             'total': total,
