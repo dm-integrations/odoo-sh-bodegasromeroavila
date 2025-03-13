@@ -3,6 +3,10 @@
     <data noupdate="1">
         <record id="decimal_scrap" model="decimal.precision">
             <field name="name">Decimales scrap</field>
+            <field name="digits" eval="7"/>
+        </record>
+        <record id="decimal_quote" model="decimal.precision">
+            <field name="name">Decimales quote</field>
             <field name="digits" eval="5"/>
         </record>
         <record id="decimal_peso" model="decimal.precision">
