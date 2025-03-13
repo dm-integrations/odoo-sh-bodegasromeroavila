@@ -8,5 +8,6 @@ class ResCompany(models.Model):
 
     dmi_report_terms_and_conditions = fields.Html(
         string='Términos y condiciones',
+        translate=True,
         help='Términos y condiciones que se mostrarán en los informes.',
     )
