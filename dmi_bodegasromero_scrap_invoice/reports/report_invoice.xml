@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--  Extendemos la factura para añadir cuota verde sin resumen  -->
+    <template id="report_invoice_document" inherit_id="account.report_invoice_document">
+        <xpath expr="//td[@name='account_invoice_line_name']" position="inside">
+            <t name="dmi_wrap_components" t-if="line.product_id and line.product_id.product_template_component_ids">
+                <br/>
+                <t t-set="data_components" t-value="line.get_info_components()"/>
+                <quote>
+                    <small>Cuota punto verde:
+                        <t t-out="data_components['total_quantity']"/>
+                        ud. x
+                        <t t-out="data_components['total_quote']"/>
+                        =
+                        <t t-out="data_components['total']"/>
+                    </small>
+                </quote>
+            </t>
+        </xpath>
+    </template>
+
+    <!-- Creamos nuevo informe de factura para añadir cuota verde con resumen  -->
+
+    <template id="report_invoice_cuota_verde_resumen_document" inherit_id="account.report_invoice_document"
+            primary="True">
+        <xpath expr="//t[@name='dmi_wrap_components']" position="replace">
+            <t t-if="line.product_id and line.product_id.product_template_component_ids">
+                <br/>
+                <t t-set="data_components" t-value="line.get_info_components_resume()"/>
+                <quote>
+                    <small>Cuota punto verde:
+                        <t t-foreach="data_components" t-as="component">
+                            <br/>
+                            <t t-out="component['name']"/>
+                            :
+                            <t t-out="component['quantity']"/> ud.
+                            x (
+                            <t t-out="component['price_unit']"/>
+                            + (
+                            <t t-out="component['weight']"/>*
+                            <t t-out="component['price_weight']"/>
+                            )) =
+                            <t t-out="component['total_quote']"/>
+                        </t>
+                    </small>
+                </quote>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="report_invoice_cuota_verde_resumen">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="lang" t-value="o.partner_id.lang"/>
+                <t t-call="dmi_bodegasromero_scrap_invoice.report_invoice_cuota_verde_resumen_document" t-lang="lang"/>
+            </t>
+        </t>
+    </template>
+
+    <record id="report_invoice_cuota_verde" model="ir.actions.report">
+        <field name="name">Facturas resumen cuota verde</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">dmi_bodegasromero_scrap_invoice.report_invoice_cuota_verde_resumen</field>
+        <field name="report_file">dmi_bodegasromero_scrap_invoice.report_invoice_cuota_verde_resumen</field>
+        <field name="print_report_name">(object._get_report_base_filename())</field>
+        <field name="attachment"/>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>
