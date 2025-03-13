@@ -36,7 +36,7 @@ class DmiProductTemplateComponents(models.Model):
     )
     quote = fields.Float(
         string="Cuota",
-        digits="Decimales scrap",
+        digits="Decimales quote",
         compute='_compute_quote',
         store=True,
     )
