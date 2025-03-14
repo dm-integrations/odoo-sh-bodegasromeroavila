@@ -15,7 +15,7 @@ class AccountMoveLine(models.Model):
             total += self.quantity * component.quote
             total_quote += component.quote
         return {
-            'total': total,
+            'total': round(total, 7),
             'total_quantity': total_quantity,
             'total_quote': round(total_quote, 7)
         }
