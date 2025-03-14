@@ -17,7 +17,7 @@ class AccountMoveLine(models.Model):
         return {
             'total': total,
             'total_quantity': total_quantity,
-            'total_quote': total_quote
+            'total_quote': round(total_quote, 7)
         }
 
     def get_info_components_resume(self):
@@ -33,6 +33,6 @@ class AccountMoveLine(models.Model):
                 'price_unit': component.price_unit,
                 'price_weight': component.price_weight,
                 'weight': component.weight,
-                'total_quote': round(self.quantity * component.quote, 5)
+                'total_quote': round(self.quantity * component.quote, 7)
             })
         return vals
