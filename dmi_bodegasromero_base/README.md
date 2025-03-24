@@ -102,3 +102,8 @@ No requiere de ninguna configuración especial para su instalación.
 [17.0.1.7] - 2025-03-03
 
     Por defecto el campo l10n_es_edi_facturae_checkbox_xml se pone a False en el wizard para el envio de facturas por email
+
+[17.0.1.8] - 2025-03-03
+
+    Modificamos la vista de los leads. Ya que al activar la opcion de crear leads, el campo fuente no aparece en la vista y es obligatorio
+    Hacemos obligatorio el campo motivo de perdida al perder una oportunidad
