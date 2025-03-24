@@ -3,7 +3,6 @@ from datetime import datetime, timedelta
 
 
 class ProjectTask(models.Model):
-
     _inherit = "project.task"
 
     dmi_calendar_event_id = fields.Many2one(
@@ -38,6 +37,7 @@ class ProjectTask(models.Model):
 
     def create_activity_date_limit(self):
         for task in self.search([
+            ('state', 'not in', ("1_done", "1_canceled")),
             ('date_deadline', '!=', False),
             ('date_deadline', '<=', fields.Date.today()),
         ]):
@@ -50,7 +50,6 @@ class ProjectTask(models.Model):
         end_date = vals.get("date_deadline") if vals.get("date_deadline") else self.date_deadline
         # Si no se indicara fecha de inicio por defecto restamos una hora
         if not start_date:
-
             start_date_dt = datetime.strptime(end_date, "%Y-%m-%d %H:%M:%S") + timedelta(hours=-1) \
                 if isinstance(end_date, str) else end_date + timedelta(hours=-1)
             start_date = start_date_dt.strftime("%Y-%m-%d %H:%M:%S")
