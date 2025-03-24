@@ -14,6 +14,9 @@
             <xpath expr="//field[@name='tag_ids']" position='before'>
                 <field name="fuente_id" required="1" options="{'no_create': 1, 'no_create_edit': 1}"/>
             </xpath>
+            <xpath expr="//group[@name='lead_priority']//field[@name='tag_ids']" position='before'>
+                <field name="fuente_id" required="1" options="{'no_create': 1, 'no_create_edit': 1}"/>
+            </xpath>
         </field>
     </record>
     <!-- Vista SEARCH   -->
