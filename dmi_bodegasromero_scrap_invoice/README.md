@@ -49,3 +49,6 @@ No requiere de ninguna configuración especial para su instalación.
 [17.0.1.0.2] - 2025-03-12
 - Añadimos 7 decimales a las cuotas
 
+[17.0.1.0.2] - 2025-04-03
+- Modificamos el método que extrae los datos para que omita cuando no venga con empaquetado en el pedido de venta
+- Modificamos el informe para que no saque error cuando no devuelve datos de empaquetado
