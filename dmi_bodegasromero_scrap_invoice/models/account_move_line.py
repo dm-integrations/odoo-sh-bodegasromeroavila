@@ -5,7 +5,9 @@ class AccountMoveLine(models.Model):
     _inherit = 'account.move.line'
 
     def get_info_components(self):
-        if not self.product_id or not self.product_id.product_template_component_ids:
+
+        if not any(self.mapped("sale_line_ids.product_packaging_id")) or \
+                not self.product_id or not self.product_id.product_template_component_ids:
             return False
 
         total = 0
