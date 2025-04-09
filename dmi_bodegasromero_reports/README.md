@@ -37,8 +37,15 @@ Añadir en los ajustes > Configurar diseño del documento. dentro del campo tér
 
 ## Changelog
  
-[17.0.1.0] - 2024-09-30
+[17.0.1.0.1] - 2024-09-30
 
     Añadimos la opcion de poner los terminos y condiciones.
     En los footer de los informes añadimos el texto de los terminos y condiciones, antes de los datos de la compañia
   
+
+## Changelog
+ 
+[17.0.1.0.2] - 2025-05-09
+
+    Extendemos el informe de facturas para añadir los grados si estan informados en alguna linea
+    Extendemos el informe de ventas para añadir los grados si estan informados en alguna linea. Modificamos traducciones
