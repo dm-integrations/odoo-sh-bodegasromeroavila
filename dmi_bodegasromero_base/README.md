@@ -107,3 +107,8 @@ No requiere de ninguna configuración especial para su instalación.
 
     Modificamos la vista de los leads. Ya que al activar la opcion de crear leads, el campo fuente no aparece en la vista y es obligatorio
     Hacemos obligatorio el campo motivo de perdida al perder una oportunidad
+
+[17.0.1.9] - 2025-04-09
+
+    añadimos un campo de grados en facturas y ventas, que multiplica el numero introducio por la cantidad, lo que afecta a los precios
+    Hacemos el campo name de los empaquetados traducible

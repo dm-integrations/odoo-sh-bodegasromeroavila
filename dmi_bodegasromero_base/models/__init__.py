@@ -1,3 +1,4 @@
+from . import accont_move_line
 from . import calendar_event
 from . import crm_lead
 from . import crm_lead_fuente
@@ -8,3 +9,4 @@ from . import res_partner
 from . import res_partner_category
 from . import sale_order
 from . import sale_order_line
+from . import product_packaging

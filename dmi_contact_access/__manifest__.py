@@ -1,6 +1,6 @@
 {
     'name': 'DMI Contact Access',
-    'version': '17.0.1.1.6',
+    'version': '17.0.1.1.7',
     'category': 'Contacts',
     'summary': 'Restricts access to contacts based on the assigned salesperson',
     'description': """
@@ -10,13 +10,16 @@
     'depends': [
         'base',
         'contacts',
+        'product',
         'sale_management',
+        'sales_team',
         'dmi_bodegasromero_base',
     ],
     'data': [
         'security/contact_access_rules.xml',
         'security/sale_access_rules.xml',
         'security/calendar_access_rules.xml',
+        'security/pricelist_access_rules.xml',
     ],
     'installable': True,
     'application': False,
