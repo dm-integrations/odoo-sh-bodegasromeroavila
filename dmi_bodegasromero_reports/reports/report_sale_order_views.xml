@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_saleorder_document" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@t-if='doc.user_id.name']" position="replace">
+            <div t-if="doc.user_id.name" class="col-auto col-3 mw-100 mb-2">
+                <strong>Person in charge:</strong><br/>
+                <span class="m-0" t-field="doc.user_id">Mitchell Admin</span>
+            </div>
+        </xpath>
+        <xpath expr="//table[hasclass('table')]//th[@name='th_quantity']"
+               position="after">
+            <t t-set="display_dmi_grados" t-value="any(l.dmi_grados for l in lines_to_report)"/>
+            <th name="th_dmi_grados" class="text-end" t-if="display_dmi_grados">
+                Grados
+            </th>
+        </xpath>
+        <xpath expr="//table[hasclass('table')]//td[@name='td_quantity']"
+               position="after">
+            <td name="td_dmi_grados" class="text-end" t-if="display_dmi_grados">
+                <span t-field="line.dmi_grados">1</span>
+            </td>
+        </xpath>
+    </template>
+</odoo>

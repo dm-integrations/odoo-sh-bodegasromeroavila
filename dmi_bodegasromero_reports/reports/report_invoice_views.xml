@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="report_invoice_document" inherit_id="account.report_invoice_document">
+        <xpath expr="//table[@name='invoice_line_table']//th[@name='th_quantity']" position="after">
+            <t t-set="display_dmi_grados" t-value="any(l.dmi_grados for l in o.invoice_line_ids)"/>
+            <th name="th_dmi_grados" class="text-end" t-if="display_dmi_grados">
+                Grados
+            </th>
+        </xpath>
+        <xpath expr="//table[hasclass('table')]//td[@name='td_quantity']"
+               position="after">
+            <td name="td_dmi_grados" class="text-end" t-if="display_dmi_grados">
+                <span t-field="line.dmi_grados">1</span>
+            </td>
+        </xpath>
+    </template>
+</odoo>

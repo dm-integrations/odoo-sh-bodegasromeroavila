@@ -21,3 +21,9 @@ msgstr "Chat interno"
 #, python-format
 msgid "Activities"
 msgstr "Recordatorios"
+
+#. module: dmi_bodegasromero_reports
+#: model_terms:ir.ui.view,arch_db:dmi_bodegasromero_reports.report_saleorder_document
+msgid "<strong>Person in charge:</strong><br/>"
+msgstr "<strong>Comercial:</strong><br/>"
+

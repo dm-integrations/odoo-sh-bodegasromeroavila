@@ -12,6 +12,10 @@
             <xpath expr="//field[@name='order_line']/tree" position="attributes">
                 <attribute name="decoration-success">reward_id != False</attribute>
             </xpath>
+
+            <xpath expr="//tree//field[@name='product_uom_qty']" position="after">
+                <field name="dmi_grados"/>
+            </xpath>
         </field>
     </record>
 

@@ -1,3 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 access_crm_lead_fuente,access_crm_lead_fuente,model_crm_lead_fuente,base.group_user,1,1,1,1
+
+access_product_pricelist_stock_manager,product.pricelist stock_manager,product.model_product_pricelist,stock.group_stock_manager,1,0,0,0
+access_product_pricelist_item_stock_manager,product.pricelist.item stock_manager,product.model_product_pricelist_item,stock.group_stock_manager,1,0,0,0
