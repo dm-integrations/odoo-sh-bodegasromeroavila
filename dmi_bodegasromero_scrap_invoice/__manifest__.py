@@ -3,7 +3,7 @@
 
 {
     'name': 'DMI Bodegas Romero Scrap Invoice',
-    'version': '17.0.1.0.3',
+    'version': '17.0.1.0.4',
     'category': 'Contacts',
     'summary': 'DMI Bodegas Romero Scrap Invoice',
     'description': """

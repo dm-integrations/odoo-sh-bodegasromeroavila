@@ -21,7 +21,9 @@
                             <field name="price_unit"/>
                             <field name="price_weight"/>
                         </group>
-                        <group></group>
+                        <group>
+                            <field name="exclude_not_packaging"/>
+                        </group>
                     </group>
                 </sheet>
             </form>
@@ -37,6 +39,7 @@
                 <field name="name"/>
                 <field name="price_unit"/>
                 <field name="price_weight"/>
+                <field name="exclude_not_packaging"/>
             </tree>
         </field>
     </record>
