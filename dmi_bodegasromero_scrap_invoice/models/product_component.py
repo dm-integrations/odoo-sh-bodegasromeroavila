@@ -19,3 +19,7 @@ class DmiProductComponent(models.Model):
         string="Precio por peso",
         digits="Decimales scrap",
     )
+    exclude_not_packaging = fields.Boolean(
+        string="Excluir si no está empaquetado",
+        default=False,
+    )

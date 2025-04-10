@@ -40,6 +40,10 @@ class DmiProductTemplateComponents(models.Model):
         compute='_compute_quote',
         store=True,
     )
+    exclude_not_packaging = fields.Boolean(
+        string="Excluir si no está empaquetado",
+        related='product_component_id.exclude_not_packaging',
+    )
 
     @api.depends('weight', 'price_unit', 'price_weight')
     def _compute_quote(self):

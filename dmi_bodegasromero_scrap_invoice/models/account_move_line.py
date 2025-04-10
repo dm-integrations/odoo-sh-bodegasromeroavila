@@ -6,14 +6,15 @@ class AccountMoveLine(models.Model):
 
     def get_info_components(self):
 
-        if not any(self.mapped("sale_line_ids.product_packaging_id")) or \
-                not self.product_id or not self.product_id.product_template_component_ids:
+        if not self.product_id or not self.product_id.product_template_component_ids:
             return False
-
+        is_packaging = any(self.mapped("sale_line_ids.product_packaging_id"))
         total = 0
         total_quote = 0
         total_quantity = self.quantity
-        for component in self.product_id.product_template_component_ids:
+        product_components = self.product_id.product_template_component_ids.filtered(
+            lambda x: not x.exclude_not_packaging) if not is_packaging else self.product_id.product_template_component_ids
+        for component in product_components:
             total += self.quantity * component.quote
             total_quote += component.quote
         return {
@@ -26,9 +27,13 @@ class AccountMoveLine(models.Model):
         if not self.product_id or not self.product_id.product_template_component_ids:
             return False
 
+        is_packaging = any(self.mapped("sale_line_ids.product_packaging_id"))
         vals = []
 
-        for component in self.product_id.product_template_component_ids:
+        product_components = self.product_id.product_template_component_ids.filtered(
+            lambda x: not x.exclude_not_packaging) if not is_packaging else self.product_id.product_template_component_ids
+
+        for component in product_components:
             vals.append({
                 'name': component.product_component_id.name,
                 'quantity': self.quantity,
