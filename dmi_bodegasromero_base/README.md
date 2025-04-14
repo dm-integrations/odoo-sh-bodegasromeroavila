@@ -112,3 +112,7 @@ No requiere de ninguna configuración especial para su instalación.
 
     añadimos un campo de grados en facturas y ventas, que multiplica el numero introducio por la cantidad, lo que afecta a los precios
     Hacemos el campo name de los empaquetados traducible
+
+[17.0.1.10] - 2025-04-09
+
+    Hacemos que el campo email del contacto solo sea obligatorio para las compañias o usuarios sin parent_id
