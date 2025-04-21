@@ -1,3 +1,4 @@
+from . import accont_move
 from . import accont_move_line
 from . import calendar_event
 from . import crm_lead
