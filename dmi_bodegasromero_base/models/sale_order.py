@@ -14,3 +14,9 @@ class SaleOrder(models.Model):
         res.append(('partner_ids', 'in', self.partner_id.ids))
         res.append(('partner_ids', 'in', self.partner_id.ids))
         return res
+
+    def _prepare_invoice(self):
+        res = super()._prepare_invoice()
+        res['tax_totals'] = self.tax_totals
+        return res
+

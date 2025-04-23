@@ -5,7 +5,7 @@ class AccountMoveLine(models.Model):
 
     _inherit = "account.move.line"
 
-    dmi_grados = fields.Integer(string='Grados')
+    dmi_grados = fields.Float(string='Grados')
 
     def _convert_to_tax_base_line_dict(self):
         """ Convert the current record to a dictionary in order to use the generic taxes computation method
@@ -15,7 +15,7 @@ class AccountMoveLine(models.Model):
         self.ensure_one()
         is_invoice = self.move_id.is_invoice(include_receipts=True)
         sign = -1 if self.move_id.is_inbound(include_receipts=True) else 1
-        quantity = self.quantity * self.dmi_grados if self.dmi_grados != 0 else self.quantity
+        quantity = (self.quantity * self.dmi_grados) / 100 if self.dmi_grados != 0 else self.product_uom_qty
 
         return self.env['account.tax']._convert_to_tax_base_line_dict(
             self,
@@ -36,7 +36,7 @@ class AccountMoveLine(models.Model):
     @api.depends('quantity', 'discount', 'price_unit', 'tax_ids', 'currency_id', 'dmi_grados')
     def _compute_totals(self):
         for line in self:
-            quantity = line.quantity * line.dmi_grados if line.dmi_grados != 0 else line.quantity
+            quantity = (line.quantity * line.dmi_grados) / 100 if line.dmi_grados != 0 else line.quantity
             if line.display_type != 'product':
                 line.price_total = line.price_subtotal = False
             # Compute 'price_subtotal'.
