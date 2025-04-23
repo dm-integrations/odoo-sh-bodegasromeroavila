@@ -10,3 +10,5 @@ class AccountMove(models.Model):
             raise UserError(_('El NIF del cliente no es correcto. Por favor verifique el NIF del cliente.'))
 
         return super(AccountMove, self).action_post()
+
+
