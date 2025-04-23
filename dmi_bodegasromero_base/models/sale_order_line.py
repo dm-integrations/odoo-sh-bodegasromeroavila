@@ -8,7 +8,7 @@ class SaleOrderLine(models.Model):
         string='Imagen',
         related='product_id.image_128',
     )
-    dmi_grados = fields.Integer(string='Grados')
+    dmi_grados = fields.Float(string='Grados')
 
     def _convert_to_tax_base_line_dict(self, **kwargs):
         """ Convert the current record to a dictionary in order to use the generic taxes computation method
@@ -17,7 +17,7 @@ class SaleOrderLine(models.Model):
         :return: A python dictionary.
         """
         self.ensure_one()
-        quantity = self.product_uom_qty * self.dmi_grados if self.dmi_grados != 0 else self.product_uom_qty
+        quantity = (self.product_uom_qty * self.dmi_grados) / 100 if self.dmi_grados != 0 else self.product_uom_qty
         return self.env['account.tax']._convert_to_tax_base_line_dict(
             self,
             partner=self.order_id.partner_id,
@@ -49,7 +49,6 @@ class SaleOrderLine(models.Model):
                 'price_tax': amount_tax,
                 'price_total': amount_untaxed + amount_tax,
             })
-
 
     def _prepare_invoice_line(self, **optional_values):
         vals = super()._prepare_invoice_line(**optional_values)
