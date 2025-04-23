@@ -15,7 +15,7 @@ class AccountMoveLine(models.Model):
         self.ensure_one()
         is_invoice = self.move_id.is_invoice(include_receipts=True)
         sign = -1 if self.move_id.is_inbound(include_receipts=True) else 1
-        quantity = (self.quantity * self.dmi_grados) / 100 if self.dmi_grados != 0 else self.product_uom_qty
+        quantity = (self.quantity * self.dmi_grados) / 100 if self.dmi_grados != 0 else self.quantity
 
         return self.env['account.tax']._convert_to_tax_base_line_dict(
             self,
