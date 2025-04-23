@@ -116,3 +116,8 @@ No requiere de ninguna configuración especial para su instalación.
 [17.0.1.10] - 2025-04-09
 
     Hacemos que el campo email del contacto solo sea obligatorio para las compañias o usuarios sin parent_id
+
+[17.0.1.11] - 2025-04-23
+
+    Modificamos los calculos de la factura para que el campo de grados afecte al precio total cant * grados / 100
+    Al registrar los pagos evitamos el control del VAT para que no salte la restriccion
