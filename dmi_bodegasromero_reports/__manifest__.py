@@ -3,7 +3,7 @@
 
 {
     'name': 'DMI Bodegas Romero Informes',
-    'version': '17.0.1.0.2',
+    'version': '17.0.1.0.3',
     'category': 'Reports',
     'summary': 'Personalizaciones Informes para Bodegas Romero',
     'description': """
@@ -18,6 +18,7 @@
     ],
     'data': [ 
         'views/base_document_layout_views.xml',
+        'views/account_move_views.xml',
         'reports/report_sale_order_views.xml',
         'reports/report_invoice_views.xml',
         'views/report_templates_views.xml',
