@@ -45,7 +45,13 @@ Añadir en los ajustes > Configurar diseño del documento. dentro del campo tér
 
 ## Changelog
  
-[17.0.1.0.2] - 2025-05-09
+[17.0.1.0.2] - 2025-04-09
 
     Extendemos el informe de facturas para añadir los grados si estan informados en alguna linea
-    Extendemos el informe de ventas para añadir los grados si estan informados en alguna linea. Modificamos traducciones
+    Extendemos el informe de ventas para añadir los grados si estan informados en alguna linea. Modifi
+
+## Changelog
+ 
+[17.0.1.0.3] - 2025-04-24
+
+    Nuevo informe XLS en que imprimimos las facturas seleccionadas desde la vista lista de facturas.
