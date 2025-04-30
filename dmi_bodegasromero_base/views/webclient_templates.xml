@@ -5,6 +5,7 @@
         <xpath expr="//div[@class='text-center small mt-4 pt-3 border-top']/a[contains(@href, 'odoo.com')]"
                 position="replace"/>
     </template>
+    
 
     <template id="frontend_layout" inherit_id="web.frontend_layout">
         <xpath expr="//t[@t-call='web.brand_promotion']/parent::div"
