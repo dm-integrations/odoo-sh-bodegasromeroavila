@@ -121,3 +121,8 @@ No requiere de ninguna configuración especial para su instalación.
 
     Modificamos los calculos de la factura para que el campo de grados afecte al precio total cant * grados / 100
     Al registrar los pagos evitamos el control del VAT para que no salte la restriccion
+
+[17.0.1.12] - 2025-04-30
+
+    Ocultamos en el website el Powered by Odoo que se encuentra en la vista frontend_layout, ocultando el valor ya que
+    muchas las vistas la heredan y da error si lo reemplazamos
