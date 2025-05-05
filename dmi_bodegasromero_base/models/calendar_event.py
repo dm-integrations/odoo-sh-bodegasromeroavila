@@ -43,7 +43,9 @@ class CalendarEvent(models.Model):
                     )
         return True
 
+
     def write(self, vals):
         res = super().write(vals)
-        self.action_sendmail(vals)
+        for record in self:
+            record.action_sendmail(vals)
         return res
