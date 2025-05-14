@@ -49,6 +49,11 @@ class ResPartner(models.Model):
             }
         )
 
+    def archive_contacts_company(self):
+        for record in self:
+            if record.is_company:
+                record.child_ids.update({"active": False})
+
     @api.model_create_multi
     def create(self, vals_list):
         res = super(ResPartner, self).create(vals_list)
@@ -56,4 +61,10 @@ class ResPartner(models.Model):
             if vals.get("is_company"):
                 for record in res:
                     record.create_activity()
+        return res
+
+    def write(self, vals):
+        res = super(ResPartner, self).write(vals)
+        if "active" in vals and not vals.get("active", False):
+            self.archive_contacts_company()
         return res
