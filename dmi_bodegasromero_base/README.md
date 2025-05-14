@@ -126,3 +126,8 @@ No requiere de ninguna configuración especial para su instalación.
 
     Ocultamos en el website el Powered by Odoo que se encuentra en la vista frontend_layout, ocultando el valor ya que
     muchas las vistas la heredan y da error si lo reemplazamos
+
+[17.0.1.13] - 2025-05-14
+
+    Añadimos en los contactos un método para poder archivar los contactos dentro de una compañía cuando se archive la compañia
+    
