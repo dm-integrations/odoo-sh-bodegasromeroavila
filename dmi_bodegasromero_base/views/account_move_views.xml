@@ -8,6 +8,7 @@
 
             <xpath expr="//tree//field[@name='quantity']" position="after">
                 <field name="dmi_grados"/>
+                <field name="dmi_alcohol_grados_discount" column_invisible="1"/>
             </xpath>
         </field>
     </record>

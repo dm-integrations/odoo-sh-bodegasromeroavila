@@ -131,3 +131,8 @@ No requiere de ninguna configuración especial para su instalación.
 
     Añadimos en los contactos un método para poder archivar los contactos dentro de una compañía cuando se archive la compañia
     
+
+[17.0.1.14] - 2025-06-30
+
+    Actualice el código de campo dmi_grados, agregue el campo dmi_alcohol_grados_discount a la venta y la cuenta, y anule el método _convert_to_tax_line_dict para administrar el cálculo de impuestos
+    

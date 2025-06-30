@@ -1,5 +1,4 @@
-from odoo import models, api, fields, _
-
+from odoo import models, fields, api, _
 
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
@@ -8,16 +7,29 @@ class SaleOrderLine(models.Model):
         string='Imagen',
         related='product_id.image_128',
     )
+
     dmi_grados = fields.Float(string='Grados')
 
-    def _convert_to_tax_base_line_dict(self, **kwargs):
-        """ Convert the current record to a dictionary in order to use the generic taxes computation method
-        defined on account.tax.
+    dmi_alcohol_grados_discount = fields.Float(
+        string="Grados Discount %",
+        compute="_compute_alcohol_grados_discount",
+        store=True,
+        digits=(16, 2),
+    )
 
-        :return: A python dictionary.
-        """
+    @api.depends('dmi_grados')
+    def _compute_alcohol_grados_discount(self):
+        for line in self:
+            line.dmi_alcohol_grados_discount = 100 * (1 - line.dmi_grados / 100) if line.dmi_grados else 0.0
+
+    def _convert_to_tax_base_line_dict(self, **kwargs):
         self.ensure_one()
-        quantity = (self.product_uom_qty * self.dmi_grados) / 100 if self.dmi_grados != 0 else self.product_uom_qty
+
+        # Combine grados with existing discount to compute an effective discount
+        if self.dmi_grados:
+            effective_discount = 100 * (1 - ((self.dmi_grados / 100.0) * (1 - self.discount / 100.0)))
+        else:
+            effective_discount = self.discount
         return self.env['account.tax']._convert_to_tax_base_line_dict(
             self,
             partner=self.order_id.partner_id,
@@ -25,32 +37,13 @@ class SaleOrderLine(models.Model):
             product=self.product_id,
             taxes=self.tax_id,
             price_unit=self.price_unit,
-            quantity=quantity,
-            discount=self.discount,
+            quantity=self.product_uom_qty,
+            discount=effective_discount,
             price_subtotal=self.price_subtotal,
-            **kwargs,
+            **kwargs
         )
-
-    @api.depends('product_uom_qty', 'discount', 'price_unit', 'tax_id', 'dmi_grados')
-    def _compute_amount(self):
-        """
-        Compute the amounts of the SO line.
-        """
-        for line in self:
-            tax_results = self.env['account.tax'].with_company(line.company_id)._compute_taxes([
-                line._convert_to_tax_base_line_dict()
-            ])
-            totals = list(tax_results['totals'].values())[0]
-            amount_untaxed = totals['amount_untaxed']
-            amount_tax = totals['amount_tax']
-
-            line.update({
-                'price_subtotal': amount_untaxed,
-                'price_tax': amount_tax,
-                'price_total': amount_untaxed + amount_tax,
-            })
 
     def _prepare_invoice_line(self, **optional_values):
         vals = super()._prepare_invoice_line(**optional_values)
-        vals["dmi_grados"] = self.dmi_grados
+        vals['dmi_grados'] = self.dmi_grados
         return vals
