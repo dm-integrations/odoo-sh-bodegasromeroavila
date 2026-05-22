@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Cambia el título de la pestaña/PDF del TPV de "Odoo POS" a "BRDA" -->
+    <template id="pos_index_title" inherit_id="point_of_sale.index">
+        <xpath expr="//title" position="replace">
+            <title>BRDA</title>
+        </xpath>
+    </template>
+</odoo>

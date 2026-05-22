@@ -14,9 +14,11 @@
     'depends': [
         'base',
         'web',
+        'point_of_sale',
         'dmi_bodegasromero_base',
     ],
     'data': [ 
+        'views/pos_assets_index_views.xml',
         'views/base_document_layout_views.xml',
         'views/account_move_views.xml',
         'reports/report_sale_order_views.xml',
