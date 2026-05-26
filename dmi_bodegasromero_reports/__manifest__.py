@@ -14,15 +14,22 @@
     'depends': [
         'base',
         'web',
+        'point_of_sale',
         'dmi_bodegasromero_base',
     ],
     'data': [ 
+        'views/pos_assets_index_views.xml',
         'views/base_document_layout_views.xml',
         'views/account_move_views.xml',
         'reports/report_sale_order_views.xml',
         'reports/report_invoice_views.xml',
         'views/report_templates_views.xml',
     ],
+    'assets': {
+        'point_of_sale._assets_pos': [
+            'dmi_bodegasromero_reports/static/src/overrides/order_receipt.xml',
+        ],
+    },
     'installable': True,
     'application': False,
     'license': 'OPL-1',
