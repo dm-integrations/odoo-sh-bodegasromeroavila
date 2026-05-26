@@ -25,6 +25,11 @@
         'reports/report_invoice_views.xml',
         'views/report_templates_views.xml',
     ],
+    'assets': {
+        'point_of_sale._assets_pos': [
+            'dmi_bodegasromero_reports/static/src/overrides/order_receipt.xml',
+        ],
+    },
     'installable': True,
     'application': False,
     'license': 'OPL-1',
