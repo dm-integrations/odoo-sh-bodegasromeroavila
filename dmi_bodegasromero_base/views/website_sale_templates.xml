@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Mostrar el título del producto en la tienda sin el sufijo de talla (ej. "(M)").
+        No modificamos el nombre real del producto: solo el texto que se renderiza
+        en la cuadrícula de la tienda web.
+    -->
+    <template id="products_item_clean_name" inherit_id="website_sale.products_item"
+              name="Tienda: título de producto sin talla">
+        <xpath expr="//h6[hasclass('o_wsale_products_item_title')]/a[@itemprop='name']" position="replace">
+            <a class="text-primary text-decoration-none" itemprop="name"
+               t-att-href="product_href"
+               t-att-content="product.website_clean_name()"
+               t-out="product.website_clean_name()"/>
+        </xpath>
+    </template>
+</odoo>

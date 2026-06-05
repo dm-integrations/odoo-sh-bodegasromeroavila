@@ -1,33 +1,17 @@
 # -*- coding: utf-8 -*-
-import re
-from odoo import models, api, fields
+from odoo import models, api
 
-
-def _clean_product_name(name):
-    if not name:
-        return ""
-    name = name.strip().lower()
-    
-    # Soportamos números de 1 o 2 dígitos para tallas de vestir (38, 40, etc.) sin de-duplicar años como "2024"
-    size_terms = r'xs|s|m|l|xl|xxl|xxxl|pequeño|pequeña|mediano|mediana|grande|grandes|talla\s*\d+|talla\s*[a-zA-Z]+|\d{1,2}'
-    
-    # 1. Paréntesis con talla o número: " (s)", " (m)", " (l)", " (xl)", " (xxl)", " (xs)", " (42)", " (talla s)"
-    name = re.sub(rf'\s*\((talla\s+)?({size_terms})\)\s*$', '', name, flags=re.IGNORECASE)
-    
-    # 2. Guión, barra o coma con talla o número: " - s", " - m", " - l", " - xl", " / s", " , s"
-    name = re.sub(rf'\s*[\-/,]\s*(talla\s+)?({size_terms})\s*$', '', name, flags=re.IGNORECASE)
-    
-    # 3. Talla de texto explícita o palabra de talla: "talla s", "talla m", "talla 42"
-    name = re.sub(rf'\s+talla\s*({size_terms})\s*$', '', name, flags=re.IGNORECASE)
-    
-    # 4. Talla suelta al final precedida por un espacio (letras individuales o palabras de tallas comunes)
-    name = re.sub(rf'\s+(xs|s|m|l|xl|xxl|xxxl|pequeño|pequeña|mediano|mediana|grande|grandes)\s*$', '', name, flags=re.IGNORECASE)
-    
-    return name.strip()
+from odoo.addons.dmi_bodegasromero_base.tools import clean_product_name as _clean_product_name
+from odoo.addons.dmi_bodegasromero_base.tools import strip_size_suffix
 
 
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
+
+    def website_clean_name(self):
+        """Nombre del producto sin el sufijo de talla, para mostrarlo en la tienda web."""
+        self.ensure_one()
+        return strip_size_suffix(self.name) or self.name
 
     @api.model
     def _search_fetch(self, search_detail, search, limit, order):
@@ -56,6 +40,11 @@ class ProductTemplate(models.Model):
 
 class ProductProduct(models.Model):
     _inherit = 'product.product'
+
+    def website_clean_name(self):
+        """Nombre de la variante sin el sufijo de talla, para mostrarlo en la tienda web."""
+        self.ensure_one()
+        return strip_size_suffix(self.name) or self.name
 
     @api.model
     def _search_fetch(self, search_detail, search, limit, order):
