@@ -16,6 +16,7 @@
         'mail',
         'spreadsheet_dashboard',
         'website',
+        'website_sale',
         'crm',
         'sms',
         'account',
