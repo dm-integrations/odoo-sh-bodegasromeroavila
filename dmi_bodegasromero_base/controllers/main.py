@@ -115,6 +115,11 @@ def _get_additional_extra_shop_values_patched(self, values, **post):
             values['products'] = filtered_recordset
             values['bins'] = TableCompute().process(filtered_recordset, values.get('ppg', 20), values.get('ppr', 4))
             
+            # Aseguramos que la actualización de values refleje también el resultado retornado del hook
+            if isinstance(res, dict):
+                res['products'] = filtered_recordset
+                res['bins'] = values['bins']
+            
     return res
 
 WebsiteSale._get_additional_extra_shop_values = _get_additional_extra_shop_values_patched
