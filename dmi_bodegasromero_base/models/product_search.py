@@ -11,7 +11,16 @@ class ProductTemplate(models.Model):
     def website_clean_name(self):
         """Nombre del producto sin el sufijo de talla, para mostrarlo en la tienda web."""
         self.ensure_one()
-        return strip_size_suffix(self.name) or self.name
+        return strip_size_suffix(self.display_name) or self.display_name
+
+    @api.depends('name', 'default_code')
+    @api.depends_context('website_strip_size')
+    def _compute_display_name(self):
+        super()._compute_display_name()
+        if self.env.context.get('website_strip_size'):
+            for tmpl in self:
+                if tmpl.display_name:
+                    tmpl.display_name = strip_size_suffix(tmpl.display_name) or tmpl.display_name
 
     @api.model
     def _search_fetch(self, search_detail, search, limit, order):
@@ -44,7 +53,19 @@ class ProductProduct(models.Model):
     def website_clean_name(self):
         """Nombre de la variante sin el sufijo de talla, para mostrarlo en la tienda web."""
         self.ensure_one()
-        return strip_size_suffix(self.name) or self.name
+        return strip_size_suffix(self.display_name) or self.display_name
+
+    @api.depends('name', 'default_code', 'product_tmpl_id')
+    @api.depends_context(
+        'display_default_code', 'seller_id', 'company_id', 'partner_id',
+        'use_partner_name', 'website_strip_size',
+    )
+    def _compute_display_name(self):
+        super()._compute_display_name()
+        if self.env.context.get('website_strip_size'):
+            for prod in self:
+                if prod.display_name:
+                    prod.display_name = strip_size_suffix(prod.display_name) or prod.display_name
 
     @api.model
     def _search_fetch(self, search_detail, search, limit, order):

@@ -17,6 +17,10 @@ class WebsiteSnippetFilter(models.Model):
         Solo aplicamos en modelos product.product y product.template.
         """
         if records and not is_sample and records._name in ('product.product', 'product.template'):
+            # Limpiamos el sufijo de talla del nombre mostrado en los snippets dinámicos
+            # (las plantillas usan record.display_name). Lo hacemos vía contexto para no
+            # afectar al carrito/checkout ni al backend.
+            records = records.with_context(website_strip_size=True)
             is_product_product = records._name == 'product.product'
             seen_templates = set()
             seen_names = set()
