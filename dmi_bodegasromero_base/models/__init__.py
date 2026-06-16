@@ -11,3 +11,5 @@ from . import res_partner_category
 from . import sale_order
 from . import sale_order_line
 from . import product_packaging
+from . import product_search
+from . import website_snippet_filter
