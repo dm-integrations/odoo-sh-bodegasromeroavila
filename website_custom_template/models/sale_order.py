@@ -12,3 +12,12 @@ class SaleOrder(models.Model):
         if self.website_id and self.website_id.mail_template_id:
             res = self.website_id.mail_template_id
         return res
+
+    def _send_payment_succeeded_for_order_mail(self):
+        mail_template = super(SaleOrder, self)._send_payment_succeeded_for_order_mail()
+
+        for order in self:
+            if order.website_id and order.website_id.mail_template_id:
+                mail_template = order.website_id.mail_template_id
+
+            order._send_order_notification_mail(mail_template)
