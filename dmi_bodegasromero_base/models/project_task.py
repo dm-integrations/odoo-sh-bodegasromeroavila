@@ -68,6 +68,7 @@ class ProjectTask(models.Model):
         return values
 
     def _upsert_calendar_event(self, vals):
+        self.ensure_one()
         if self.dmi_calendar_event_id:
             values = self._prepare_event_vals(vals)
             self.dmi_calendar_event_id.sudo().update(values)
@@ -79,18 +80,17 @@ class ProjectTask(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         tasks = super().create(vals_list)
-        for vals in vals_list:
-            if 'planned_date_begin' in vals and vals.get('planned_date_begin'):
-                self._upsert_calendar_event(vals)
+        for task, vals in zip(tasks, vals_list):
+            if vals.get('planned_date_begin'):
+                task._upsert_calendar_event(vals)
         return tasks
 
     def write(self, vals):
         res = super().write(vals)
-        # Comprobamos si hay fecha de inicio o final en la tarea o si ya tiene un evento de calendario asociado
-        # self.planned_date_begin es basicamente por historias anteriores a la personalizacion
         if self.env.context.get("no_update"):
             return res
-        if 'planned_date_begin' in vals or 'date_deadline' in vals \
-                or self.planned_date_begin or self.dmi_calendar_event_id:
-            self._upsert_calendar_event(vals)
+        if 'planned_date_begin' in vals or 'date_deadline' in vals:
+            for task in self:
+                if task.planned_date_begin or task.dmi_calendar_event_id:
+                    task._upsert_calendar_event(vals)
         return res
