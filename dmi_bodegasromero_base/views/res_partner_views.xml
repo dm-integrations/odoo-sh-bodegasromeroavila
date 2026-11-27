@@ -39,7 +39,7 @@
                 <field name="partner_vinculado_id" required="fuente_id == 1" options="{'no_create': 1, 'no_create_edit': 1}"/>
             </xpath>
             <xpath expr="//field[@name='team_id']" position="before">
-                <field name="user_ids" widget="many2many_tags"/>
+                <field name="seguidor_ids" widget="many2many_tags"/>
             </xpath>
             <xpath expr="//field[@name='property_product_pricelist']" position="attributes">
                 <attribute name="domain">[('no_show_in_list','=',False)]</attribute>

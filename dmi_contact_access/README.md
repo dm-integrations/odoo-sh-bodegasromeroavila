@@ -89,3 +89,10 @@ Es necesario revisar la configuración de los grupos asignados a cada usuario.
 [17.0.1.1.7] - 2024-04-9
 
     - Solo se permite cambiar tarifas a usuarios administradores de ventas
+
+
+[17.0.1.1.8] - 2026-11-27
+
+    - Los usuarios Commercial Own User solo ven los contactos donde son el comercial (user_id) y los contactos
+      de usuarios internos. Se elimina el acceso por seguidores a contactos.
+    - Las reglas de pedidos pasan a usar el campo seguidor_ids (antes user_ids, que se restaura al estándar de Odoo).

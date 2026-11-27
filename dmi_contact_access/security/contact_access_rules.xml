@@ -41,9 +41,7 @@
                  [
                     '|',
                     ('internal_partner', '=', True),
-                    '|',
-                    ('user_id','=',user.id),
-                    ('commercial_partner_id.user_ids','in',  user.ids),
+                    ('user_id', '=', user.id),
                 ]
              </field>
              <field name="perm_read" eval="True"/>

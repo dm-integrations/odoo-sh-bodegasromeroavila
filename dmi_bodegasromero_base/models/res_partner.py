@@ -12,9 +12,14 @@ class ResPartner(models.Model):
         tracking=True,
         required=True,
     )
-    user_ids = fields.Many2many(
+    # No redefinir ``user_ids``: es el One2many estándar res.users.partner_id.
+    # Se mantiene la tabla relacional histórica para conservar los datos.
+    seguidor_ids = fields.Many2many(
         default=lambda self: self.env.user,
         comodel_name="res.users",
+        relation="res_partner_res_users_rel",
+        column1="res_partner_id",
+        column2="res_users_id",
         string="Seguidores",
         tracking=True,
         required=False,
